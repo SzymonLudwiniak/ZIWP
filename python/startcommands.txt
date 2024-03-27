@@ -1,0 +1,4 @@
+py -3.6 -m virtualenv .venv
+.\.venv\Scripts\activate
+pip install --extra-index-url https://pypi.clarin-pl.eu/simple/ lpmn_client_biz
+pip install -r requirements.txt
