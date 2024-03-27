@@ -39,14 +39,15 @@ const StyledBlackLabel = styled.label`
   display: block;
   font-size: 0.8rem;
   color: black;
+  max-width: 450px;
 `;
 
 const StyledAuthorRow = styled.div``;
 
-const Dot = ({ x, y }) => {
+export default function Dot({ x, y, textData }) {
   const [showInfo, setShowInfo] = useState(false);
-  const newX = x + 20;
-  const newY = y + 15;
+  const newX = parseInt(x) + 20;
+  const newY = parseInt(y) + 15;
 
   const handleMouseEnter = () => {
     setShowInfo(true);
@@ -60,8 +61,8 @@ const Dot = ({ x, y }) => {
     <>
       <StyledDotDiv
         style={{
-          top: y + "px",
-          left: x + "px",
+          top: parseInt(y) + "px",
+          left: parseInt(x) + "px",
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -75,24 +76,18 @@ const Dot = ({ x, y }) => {
         >
           <StyledAuthorRow>
             <StyledSmallGreyLabel>Author: </StyledSmallGreyLabel>
-            <StyledBlackLabel>inż. Jakub Kadziewicz</StyledBlackLabel>
+            <StyledBlackLabel>{textData.author}</StyledBlackLabel>
           </StyledAuthorRow>
           <StyledAuthorRow>
             <StyledSmallGreyLabel>Date: </StyledSmallGreyLabel>
-            <StyledBlackLabel>12.12.2012</StyledBlackLabel>
+            <StyledBlackLabel>{textData.date}</StyledBlackLabel>
           </StyledAuthorRow>
           <StyledAuthorRow>
             <StyledSmallGreyLabel>Description: </StyledSmallGreyLabel>
-            <StyledBlackLabel>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            </StyledBlackLabel>
+            <StyledBlackLabel>{textData.description}</StyledBlackLabel>
           </StyledAuthorRow>
         </StyledInfoDiv>
       )}
     </>
   );
-};
-
-export default Dot;
+}
